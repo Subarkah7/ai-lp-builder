@@ -20,7 +20,14 @@ const Builder: React.FC = () => {
     price: 'Rp 999.000',
     ctaLink: '#',
     ctaText: 'Mulai Sekarang',
-    theme: 'professional'
+    theme: 'professional',
+    colors: {
+      primary: '#3B82F6',
+      secondary: '#1E40AF',
+      accent: '#F59E0B',
+      background: '#FFFFFF',
+      text: '#1F2937'
+    }
   });
 
   const handleGenerateCode = async () => {

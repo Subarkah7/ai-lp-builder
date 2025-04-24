@@ -34,6 +34,16 @@ const InputForm: React.FC<InputFormProps> = ({ landingPageData, setLandingPageDa
     setLandingPageData(prev => ({ ...prev, [name]: value }));
   };
 
+  const handleColorChange = (colorType: keyof LandingPageData['colors'], value: string) => {
+    setLandingPageData(prev => ({
+      ...prev,
+      colors: {
+        ...prev.colors,
+        [colorType]: value
+      }
+    }));
+  };
+
   const handleAdvantageChange = (index: number, value: string) => {
     const newAdvantages = [...landingPageData.advantages];
     newAdvantages[index] = value;
@@ -180,6 +190,59 @@ const InputForm: React.FC<InputFormProps> = ({ landingPageData, setLandingPageDa
           <option value="creative">Kreatif</option>
           <option value="modern">Modern</option>
         </select>
+      </div>
+
+      <div className="space-y-4">
+        <label className="block text-sm font-medium text-gray-700">
+          Kombinasi Warna
+        </label>
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <label className="block text-xs text-gray-500 mb-1">Warna Utama</label>
+            <input
+              type="color"
+              value={landingPageData.colors.primary}
+              onChange={(e) => handleColorChange('primary', e.target.value)}
+              className="w-full h-10 rounded cursor-pointer"
+            />
+          </div>
+          <div>
+            <label className="block text-xs text-gray-500 mb-1">Warna Sekunder</label>
+            <input
+              type="color"
+              value={landingPageData.colors.secondary}
+              onChange={(e) => handleColorChange('secondary', e.target.value)}
+              className="w-full h-10 rounded cursor-pointer"
+            />
+          </div>
+          <div>
+            <label className="block text-xs text-gray-500 mb-1">Warna Aksen</label>
+            <input
+              type="color"
+              value={landingPageData.colors.accent}
+              onChange={(e) => handleColorChange('accent', e.target.value)}
+              className="w-full h-10 rounded cursor-pointer"
+            />
+          </div>
+          <div>
+            <label className="block text-xs text-gray-500 mb-1">Warna Background</label>
+            <input
+              type="color"
+              value={landingPageData.colors.background}
+              onChange={(e) => handleColorChange('background', e.target.value)}
+              className="w-full h-10 rounded cursor-pointer"
+            />
+          </div>
+          <div>
+            <label className="block text-xs text-gray-500 mb-1">Warna Teks</label>
+            <input
+              type="color"
+              value={landingPageData.colors.text}
+              onChange={(e) => handleColorChange('text', e.target.value)}
+              className="w-full h-10 rounded cursor-pointer"
+            />
+          </div>
+        </div>
       </div>
     </div>
   );
